@@ -1,0 +1,93 @@
+# Linux Commands & DevOps Bootcamp - Comprehensive Notes
+
+## Introduction
+- The video provides an introduction to Linux commands and their importance in a DevOps boot camp.
+- Covers terminal basics, shell scripting, practical applications, and commonly used commands.
+- Encourages hands-on learning and documentation through blogging.
+
+## Key Topics Covered
+
+### 1. Practical Learning Approach
+- Focuses on hands-on experience over theoretical knowledge.
+- Encourages learners to engage with real projects to improve skills.
+
+### 2. Understanding the Shell & Commands
+- Shell: A command-line interface to interact with the operating system.
+- Commands executed in the shell allow users to manage files, directories, and processes.
+- Essential commands:
+  - `echo "Hello, World!"` – Print text to the terminal.
+  - `whoami` – Display the current user.
+  - `uname -a` – Show system information.
+  - `man <command>` – Show the manual page for a command.
+  - `exit` – Close the terminal session.
+
+### 3. Navigating the Terminal
+- Moving between directories and managing files effectively.
+- Commands:
+  - `pwd` – Print the current working directory.
+  - `ls` – List files in a directory.
+  - `cd <directory>` – Change the directory.
+  - `cd ..` – Move up one level in the directory.
+  - `ls -l` – Detailed list of files with permissions.
+
+### 4. File Management
+- Managing files and directories using the terminal.
+- Commands:
+  - `mkdir <directory>` – Create a new directory.
+  - `touch <file>` – Create a new file.
+  - `cp <source> <destination>` – Copy files or directories.
+  - `mv <source> <destination>` – Move or rename files.
+  - `rm <file>` – Remove files.
+  - `rm -r <directory>` – Remove directories recursively.
+
+### 5. Environment Variables
+- Role of environment variables in system configurations.
+- Commands:
+  - `echo $PATH` – Show directories where executable files are stored.
+  - `export VAR=value` – Set an environment variable.
+  - `unset VAR` – Remove an environment variable.
+  - `env` – Display all environment variables.
+
+### 6. Command Redirection & Piping
+- Managing output and automating tasks.
+- Commands:
+  - `>` – Redirect output to a file (overwrite).
+  - `>>` – Append output to a file.
+  - `<` – Take input from a file.
+  - `|` – Pipe output from one command as input to another.
+  - `grep <pattern> <file>` – Search for a pattern in a file.
+  - `sort <file>` – Sort file contents.
+
+### 7. Monitoring System Resources
+- Tracking system performance and disk usage.
+- Commands:
+  - `top` – Display running processes and system resource usage.
+  - `htop` – Interactive process monitoring.
+  - `ps aux` – Show all running processes.
+  - `df -h` – Show disk space usage in human-readable format.
+  - `du -sh <directory>` – Show the size of a directory.
+  - `free -h` – Display memory usage.
+
+### 8. Basic Scripting with Bash
+- Automating repetitive tasks using shell scripts.
+- Steps:
+  1. Create a script file: `nano script.sh`
+  2. Add shebang: `#!/bin/bash`
+  3. Write commands inside the script.
+  4. Save and exit.
+  5. Give execute permission: `chmod +x script.sh`
+  6. Run the script: `./script.sh`
+
+## Key Insights
+- **Hands-on Learning**: Engage with real-world projects to build confidence.
+- **Understanding the Shell**: Foundation for interacting with the operating system.
+- **Efficient Terminal Navigation**: Essential for managing Linux environments.
+- **Environment Variables**: Critical for configuring and optimizing command-line tools.
+- **Script Writing**: Enables automation and efficiency in DevOps workflows.
+- **System Monitoring**: Important for performance optimization in DevOps.
+
+## Conclusion
+- The tutorial provides a strong foundation for Linux beginners.
+- Encourages a collaborative learning approach through documentation and blogging.
+- Prepares learners for advanced DevOps topics like Docker and Kubernetes.
+
