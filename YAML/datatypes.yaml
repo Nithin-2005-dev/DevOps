@@ -1,0 +1,40 @@
+#variables
+myself: nithin
+fruit: "apple"
+job: 'sde'
+
+bio: hey my name is nithin kumar . i am learning yaml course
+
+#write a single line in multiple lines
+message: >
+this will
+all be
+in one single line
+
+#same as
+message: !!str this will all be in one single line
+
+number: 5473
+marks: 98.76
+booleanValue: !!bool No #n,N,false,False,FALSe
+#same for true->yes,y,Y
+
+#specify the type
+zero: !!int 0
+positiveNum: !!int 46
+negativeeNum: !!int -46
+binaryNum: !!int 0010
+octalNum: !!int 06574
+hexa: !!int 0x45
+commaValue: !!int +540_000 # 540,000
+
+#floating point numbers
+marks: !!float 56.89
+infinite: !!float .inf
+not a num: .nan
+
+#null
+surname: !!null Null # or null NULL ~
+
+#dates and time
+date: 2025-03-15

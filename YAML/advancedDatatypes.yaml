@@ -1,0 +1,66 @@
+student: !!seq
+ - marks
+ - name
+ - roll_no
+
+#like this also
+cities: [new delhi,mumbai]
+
+#some of the keys of the seq will be empty
+#sparse seq
+sparse seq:
+ - hey
+ - how
+ - 
+ - Null
+ - sup
+
+-
+ - mango
+ - apple
+ - banana
+-
+ - marks
+ - roll_no
+
+#key: value pairs are called maps
+!!map
+#nested mapping: map within a map
+name: Nithin
+role:
+  age: 78
+  job: student
+
+#pairs:keys may have duplicate values
+# !!pairs
+pair example: !!pairs
+  -job: student
+  -job: teacher
+#this will be an array of hashtables
+#!!set will allow you to have unique values
+names: !!set
+  ? nithin
+  ? janu
+#dictionary !!omap
+people: !!omap
+  - nithin:
+    name: nithin kumar
+    age: 20
+    height: 170
+  - janu:
+    name: janu
+    age: 20
+    height: 170
+#reusing some properties using anchors
+likings: &likes
+  fav fruit: watermelon
+  dislikes: cucumber
+
+nithin:
+  name: Nithin
+  <<: *likes
+
+janu:
+  name: Janu
+  <<: *likes
+  fav fruit: mango
