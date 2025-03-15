@@ -1,0 +1,22 @@
+
+YAML Ain't Markup Language (YAML)
+--------------------------------
+
+Definition:
+- A data format used to exchange data, similar to XML and JSON.
+
+Data Serialization:
+- Serialization is the process of converting complex data objects into a data stream.
+- Object -> Stream -> Computer
+
+Uses:
+- Configuration files (e.g., Docker, Kubernetes)
+- Data exchange
+
+Benefits:
+1. Simple and easy to read.
+2. Strict syntax - Indentation is important.
+3. Easily convertible.
+4. Supported by most programming languages.
+5. Powerful for representing complex data.
+6. Many tools and parsers available.
