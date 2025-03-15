@@ -1,0 +1,100 @@
+->in initial days, there is one server for one application.
+->vmware solved this problem using virtual machines.
+->virtual machine requires there own operating system.
+->wouldn't it be cool if we can run the different applications in same operating system?
+->this problem is solved by containers.
+
+https://www.techwithkunal.com/blog/getting-started-with-docker
+
+architecture:-
+
+                      +------------------------+
+                      |    Docker CLI (Client)  |
+                      +-----------+------------+
+                                  |
+                                  |  (Commands: build, run, stop, etc.)
+                                  |
+                      +-----------v------------+
+                      |     Docker Daemon      |
+                      |    (Docker Engine)     |
+                      +-----------+------------+
+                                  |
+             +--------------------+------------------+
+             |                                         |
+    +--------v-------+                         +-------v--------------+
+    | Docker Images  |                         |  Docker Containers   |
+    | (Read-Only)    |                         |  (Running Instances) |
+    +----------------+                         +----------------------+
+            |                                         |
+            | (Image Layers)                          | (Isolated Processes)
+            |                                         |
+    +-------v-------+                         +-------v----------+
+    |   Storage     |                         |  Networking      |
+    |   (Volumes)   |                         |  (Bridges, etc.) |
+    +---------------+                         +------------------+
+
+docker runtime:-allows us to start and stop containers.
+docker engine:-used to interact with docker.
+docker orchestration:-it allows us to manage containers.
+
+docker file->image->container
+
+what is devOps?
+->devOps is a set of practices.
+
+               +--------------------+
+               |       Plan         |  <-- Requirements, Agile Planning, Architecture Design
+               |  (Project Setup)   |
+               +--------------------+
+                        |
+                        v
+               +--------------------+
+               |       Code         |  <-- Version Control, Git, Code Review, CI Tools
+               |  (Development)     |
+               +--------------------+
+                        |
+                        v
+               +----------------------------+
+               |      Build                 |  <-- Build Automation, Compilation, Packaging, CI Pipeline
+               |  (CI Tools: Jenkins, etc.) |
+               +----------------------------+
+                        |
+                        v
+               +-----------------------------------------+
+               |       Test                              |  <-- Automated Testing, Unit Testing, Integration Testing
+               |  (Testing Tools: Selenium, JUnit, etc.) |
+               +-----------------------------------------+
+                        |
+                        v
+               +------------------------------------------------+
+               |      Release                                   |  <-- Version Control, Release Management, Deployment Strategy
+               |  (Version Control Tools: GitHub, GitLab, etc.) |
+               +------------------------------------------------+
+                        |
+                        v
+               +--------------------------------------------------+
+               |      Deploy                                      |  <-- Infrastructure as Code, Configuration Management
+               |  (Tools: Ansible, Terraform, Docker, Kubernetes) |
+               +--------------------------------------------------+
+                        |
+                        v
+               +------------------------------------------+
+               |      Operate                             |  <-- System Monitoring, Logging, Application Performance Monitoring
+               |  (Tools: Prometheus, Grafana, ELK Stack) |
+               +------------------------------------------+
+                        |
+                        v
+               +--------------------------------------+
+               |      Monitor                         |  <-- Feedback Collection, Incident Management, Continuous Improvement
+               |  (Tools: Nagios, New Relic, DataDog) |
+               +--------------------------------------+
+                        |
+                        v
+               +--------------------+
+               | Continuous Cycle   |  <-- Continuous Integration, Continuous Delivery, Continuous Deployment
+               |      (Repeat)      |
+               +--------------------+
+
+dev->app,dicker file,image,container
+ops->download,run image,operating
+
