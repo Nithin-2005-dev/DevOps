@@ -1,0 +1,71 @@
+🌊 Docker Engine Architecture:
+Docker Engine is the core component of Docker that provides containerization services. It follows a client-server architecture.
+                                        +--------------------+
+                                        |    Docker Client    |
+                                        |      (CLI)          |
+                                        | (docker commands)   |
+                                        +---------|-----------+
+                                                |
+                                                v
+                                        +---------------------+
+                                        |    Docker Daemon     |
+                                        |  (Background Process)|
+                                        |  - Handles Containers|
+                                        |  - Manages Images    |
+                                        |  - Listens to API    |
+                                        +---------|-----------+
+                                                |
+                                    +------------|-----------------+
+                                    |            |                 |
+                                    v            v                 v
+                        +----------------+  +----------------+  +-----------------+
+                        |   Docker Host  |  |   Docker Host   |  |  Docker Registry |
+                        |  (Images &     |  | (Containers &   |  | (Public/Private) |
+                        |   Containers)  |  |  Networks)      |  |  Stores Images   |
+                        +----------------+  +----------------+  +------------------+
+                                |                    |
+                                |                    |
+                                v                    v
+                                +------------------------+ 
+                                |     Docker Objects     |
+                                |  - Images              |
+                                |  - Containers          |
+                                |  - Networks            |
+                                |  - Volumes             |
+                                +------------------------+
+
+
+
+🧩 Components of Docker Engine:
+Docker Client (CLI):
+Interface for users to interact with Docker.
+Commands like docker build, docker run, docker push, etc.
+Sends requests to the Docker Daemon using REST API.
+
+Docker Daemon (Server):
+The background process running on the host.
+Handles building, running, and managing Docker containers.
+Listens to Docker API requests.
+
+Docker Host:
+The system where Docker Daemon runs.
+Contains Docker Daemon, Containers, and Images.
+Manages resources like CPU, Memory, Network, and Storage.
+
+Docker Registry:
+A storage location for Docker Images.
+Public Registry: Docker Hub.
+Private Registry: Custom registries for security and performance.
+
+Docker Objects:
+    Images: Read-only templates used to create containers.
+    Containers: Isolated applications created from images.
+    Networks: Manages container communication.
+    Volumes: Persistent data storage for containers.
+🔄 Workflow (How It Works):
+Docker Client sends a command to the Docker Daemon.
+Docker Daemon processes the command and interacts with:
+Images (via Registries) - Pulls images if not available locally.
+Containers - Creates and manages containers.
+Networks & Volumes - Manages networking and data persistence.
+Docker Daemon sends the output back to the Client.
