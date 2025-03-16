@@ -1,0 +1,79 @@
+configuration managament:-
+->we can maintain all changes in system with the help of software.
+
+managing containers:-
+monolithic applications:every service run in a single container.
+                           +---------------------+
+                           |   Monolithic App    |
+                           |---------------------|
+                           |                     |
+                           |  Presentation Layer |
+                           |  (UI & Frontend)    |
+                           |                     |
+                           |---------------------|
+                           |                     |
+                           |  Business Logic     |
+                           |  (Services, APIs,   |
+                           |   Core Functions)   |
+                           |                     |
+                           |---------------------|
+                           |                     |
+                           |  Data Access Layer  |
+                           |  (Database Handling |
+                           |   & Persistence)    |
+                           |                     |
+                           +---------------------+
+                                   |
+                                   v
+                           +---------------------+
+                           |      Database       |
+                           | (Single Data Store) |
+                           +---------------------+
+
+
+microservices:instead of deploying as a single application deploy different services in different containers.
+
+                          +-------------------+
+                          |   API Gateway     |
+                          | (Routing & Auth)  |
+                          +---------|---------+
+                                    |
+                    +---------------|---------------+
+                    |                               |
+                    v                               v
+         +------------------+            +-------------------+
+         |  Service A       |            |  Service B        |
+         | (User Service)   |            | (Order Service)   |
+         |------------------|            |-------------------|
+         |  Business Logic  |            |  Business Logic   |
+         |  Database Access |            |  Database Access  |
+         |------------------|            |-------------------|
+         |  Database A      |            |  Database B       |
+         +------------------+            +-------------------+
+
+                    +---------------|---------------+
+                    |                               |
+                    v                               v
+         +------------------+            +------------------+
+         |  Service C       |            |  Service D       |
+         | (Product Service)|            | (Inventory Serv.)|
+         |------------------|            |------------------|
+         |  Business Logic  |            |  Business Logic  |
+         |  Database Access |            |  Database Access |
+         |------------------|            |------------------|
+         |  Database C      |            |  Database D      |
+         +------------------+            +------------------+
+
+->we can do fault isolation.
+
+orchestrators:-deploy and managing applications dynamically.
+->deploy
+->zero downtime updates
+->scale
+->self heal containers
+
+kubernates:-
+->kubernates is much more than container orchestator.
+->we can run it on own cloud,own machine,outside public cloud provider and we can migrate it.
+->we can replecate and scale services and put those on dedicated servers.
+->we can use volumes,external storege,load balancing,service discovery,we can store secrets.

@@ -1,38 +1,62 @@
 🌊 Docker Engine Architecture:
 Docker Engine is the core component of Docker that provides containerization services. It follows a client-server architecture.
-                                        +--------------------+
-                                        |    Docker Client    |
-                                        |      (CLI)          |
-                                        | (docker commands)   |
-                                        +---------|-----------+
-                                                |
-                                                v
-                                        +---------------------+
-                                        |    Docker Daemon     |
-                                        |  (Background Process)|
-                                        |  - Handles Containers|
-                                        |  - Manages Images    |
-                                        |  - Listens to API    |
-                                        +---------|-----------+
-                                                |
-                                    +------------|-----------------+
-                                    |            |                 |
-                                    v            v                 v
-                        +----------------+  +----------------+  +-----------------+
-                        |   Docker Host  |  |   Docker Host   |  |  Docker Registry |
-                        |  (Images &     |  | (Containers &   |  | (Public/Private) |
-                        |   Containers)  |  |  Networks)      |  |  Stores Images   |
-                        +----------------+  +----------------+  +------------------+
-                                |                    |
-                                |                    |
-                                v                    v
-                                +------------------------+ 
-                                |     Docker Objects     |
-                                |  - Images              |
-                                |  - Containers          |
-                                |  - Networks            |
-                                |  - Volumes             |
-                                +------------------------+
+                         +--------------------+
+                        |    Docker Client    |
+                        |       (CLI)         |
+                        |  (docker commands)  |
+                        +---------|-----------+
+                                  |
+                                  v
+                        +---------------------+
+                        |    Docker Daemon     |
+                        |  (Background Process)|
+                        |  - Handles Containers|
+                        |  - Manages Images    |
+                        |  - Listens to API    |
+                        +---------|-----------+
+                                  |
+                                  v
+                        +---------------------+
+                        |      containerd      |
+                        |  (Container Manager) |
+                        |  - Interacts with    |
+                        |    runc & shim       |
+                        +---------|-----------+
+                                  |
+                                  v
+                        +---------------------+
+                        |       runc           |
+                        | (Runtime for         |
+                        |  Creating & Starting |
+                        |  Containers)         |
+                        +---------|-----------+
+                                  |
+                                  v
+                        +---------------------+
+                        |        shim          |
+                        | (Maintains Container |
+                        |  Lifecycle after runc|
+                        |  exits)              |
+                        +---------|-----------+
+                                  |
+                   +--------------|--------------+
+                   |              |              |
+                   v              v              v
+         +----------------+  +----------------+  +-----------------+
+         |   Docker Host   |  |   Docker Host   |  |  Docker Registry |
+         |   (Images &     |  | (Containers &  |  |  (Public/Private) |
+         |   Containers)   |  |  Networks)     |  |  Stores Images    |
+         +----------------+  +----------------+  +-------------------+
+                   |                |
+                   |                |
+                   v                v
+            +------------------------+ 
+            |     Docker Objects      |
+            |   - Images              |
+            |   - Containers          |
+            |   - Networks            |
+            |   - Volumes             |
+            +------------------------+
 
 
 

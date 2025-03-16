@@ -1,0 +1,127 @@
+cluster:-control plane + nodes
+worker:-where our application will be running.
+control plane:-manages the worker nodes.
+kubectl:-
+->kubernetes cli tool.
+->communicates with control plane.
+pod:-
+->sheduling unit.
+how to start?
+1)create microservice
+2)contanirize it
+3)put container in pods
+4)deploy these pods to controllers
+
+control plane:-
+->collection of various components that help us in managing clusters.
+                      +-------------------------------+
+                      |       Control Plane           |
+                      |-------------------------------|
+                      |                               |
+                      | +-------------------------+   |
+                      | |  API Server             |   |  <- Entry point for all control plane requests
+                      | |-Authenticates & Validates   | 
+                      | |-Exposes Kubernetes API  |   |
+                      | +-------------------------+   |
+                      |                               |
+                      | +-------------------------+   |
+                      | |  Scheduler              |   |  <- Assigns workloads to nodes based on resources
+                      | |  - Watches for new pods |   |
+                      | |  -Selects suitable nodes|   |
+                      | +-------------------------+   |
+                      |                               |
+                      | +-------------------------+   |
+                      | |  Controller Manager     |   |  <- Manages controllers to maintain desired state
+                      | |  - Node Controller      |   | 
+                      | |  - Replication Controller|  |
+                      | |  - Endpoints Controller |   |
+                      | |  - Service Controller   |   |
+                      | +-------------------------+   |
+                      |                               |
+                      | +-------------------------+   |
+                      | |  etcd (Key-Value Store) |   |  <- Stores cluster state and configuration
+                      | |  - Highly Available     |   |
+                      | |  - Consistent & Reliable|   |
+                      | +-------------------------+   |
+                      +-------------------------------+
+                                   |
+                                   v
+                      +-----------------------------+
+                      |         Worker Nodes        |
+                      |-----------------------------|
+                      | +-------------------------+ |
+                      | |     Kubelet             | |  <- Communicates with API Server, ensures containers run
+                      | +-------------------------+ |
+                      | |  Kube Proxy             | |  <- Manages networking, load balancing
+                      | +-------------------------+ |
+                      | |  Container Runtime      | |  <- Runs containers (e.g., Docker, containerd)
+                      | +-------------------------+ |
+                      +-----------------------------+
+
+kubernetes architecture:-
+
+                           +--------------------------------------------+
+                           |              Control Plane                |
+                           +--------------------------------------------+
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |             API Server               |  |
+                           |  | - Exposes Kubernetes API             |  |
+                           |  | - Handles REST requests               |  |
+                           |  +--------------------------------------+  |
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |          Controller Manager          |  |
+                           |  | - Manages controllers (e.g., ReplicaSet)|  |
+                           |  | - Ensures desired state               |  |
+                           |  +--------------------------------------+  |
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |            Scheduler                 |  |
+                           |  | - Distributes workloads to nodes     |  |
+                           |  | - Ensures efficient resource usage   |  |
+                           |  +--------------------------------------+  |
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |         etcd (Key-Value Store)       |  |
+                           |  | - Stores cluster state persistently  |  |
+                           |  | - High availability & consistency    |  |
+                           |  +--------------------------------------+  |
+                           +--------------------------------------------+
+
+                                           |
+                                           |
+                                           v
+
+                           +--------------------------------------------+
+                           |                 Worker Nodes              |
+                           +--------------------------------------------+
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |              Kubelet                 |  |
+                           |  | - Communicates with API Server       |  |
+                           |  | - Manages container lifecycle        |  |
+                           |  +--------------------------------------+  |
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |            Kube-Proxy                |  |
+                           |  | - Manages network rules              |  |
+                           |  | - Enables pod-to-pod communication   |  |
+                           |  +--------------------------------------+  |
+                           |                                            |
+                           |  +--------------------------------------+  |
+                           |  |              Container Runtime       |  |
+                           |  | - Runs containers (Docker, CRI-O, etc.)| |
+                           |  | - Interfaces with Kubelet            |  |
+                           |  +--------------------------------------+  |
+                           +--------------------------------------------+
+
+                                           |
+                                           |
+                                           v
+
+                             +----------------------------------+
+                             |       Persistent Storage        |
+                             | - Stores data for Stateful Apps |
+                             | - PVC, PV, Storage Classes      |
+                             +----------------------------------+
