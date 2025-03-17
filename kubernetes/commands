@@ -1,0 +1,46 @@
+📌 Basic Commands
+minikube start                  # Start Minikube
+minikube stop                   # Stop Minikube
+minikube delete                 # Delete the Minikube cluster
+minikube status                 # Check status of Minikube
+minikube dashboard              # Launch Kubernetes Dashboard
+
+📌 Configuration & Resource Management
+minikube start --driver=docker --memory=2000 --cpus=2  # Start with specific resources
+minikube config set memory 2000                         # Set default memory for Minikube
+minikube config set cpus 2                              # Set default CPU count for Minikube
+minikube config view                                    # View current configuration
+
+📌 Kubernetes Add-ons
+minikube addons list               # List all available add-ons
+minikube addons enable metrics-server  # Enable metrics-server for monitoring
+minikube addons enable dashboard    # Enable Kubernetes Dashboard
+minikube addons disable <addon-name> # Disable a specific add-on
+
+📌 Service Management
+kubectl create deployment nginx-deployment --image=nginx    # Create a deployment
+kubectl expose deployment nginx-deployment --type=NodePort --port=80  # Expose deployment as a service
+minikube service <service-name>    # Access a service via Minikube tunnel
+
+📌 Service URL Discovery
+minikube service list                  # List all services
+minikube service <service-name> --url   # Get the URL for a specific service
+
+📌 Accessing Docker Inside Minikube
+eval $(minikube docker-env)           # Point Docker CLI to use Minikube's Docker daemon
+docker images                         # List images in Minikube's Docker daemon
+
+📌 Checking Cluster Info
+kubectl get nodes              # List nodes
+kubectl get pods -A             # List all pods across namespaces
+kubectl get services            # List all services
+kubectl get deployments         # List all deployments
+
+📌 Viewing Logs & Troubleshooting
+minikube logs                      # View Minikube logs
+kubectl logs <pod-name>            # View logs of a specific pod
+minikube tunnel                    # Create network tunnel to access services with LoadBalancer type
+
+📌 Stopping & Cleaning Up
+minikube stop               # Stop the cluster
+minikube delete             # Delete the cluster completely
