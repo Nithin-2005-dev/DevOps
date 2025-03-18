@@ -1,0 +1,103 @@
+✅ What is ArgoCD?
+ArgoCD is a GitOps continuous delivery tool for Kubernetes. It allows you to declaratively manage Kubernetes resources by syncing them from a Git repository and continuously monitoring them for deviations from the desired state.
+
+🌟 Key Features:
+Declarative GitOps approach.
+Automated synchronization to the desired state.
+Real-time monitoring.
+Rollback support for applications.
+Secure UI and CLI access.
+📌 Setup Recap (What You've Done So Far)
+Installed Minikube and started the cluster.
+Installed ArgoCD via Helm. (Though you faced connectivity issues)
+Tried accessing the ArgoCD UI via port-forwarding.
+📌 ArgoCD Components
+argocd-server (UI & API Server): Handles user requests via Web UI, CLI, and gRPC.
+argocd-repo-server: Manages Git operations (e.g., pulling manifests).
+argocd-application-controller: Continuously monitors applications and ensures desired state is maintained.
+argocd-dex-server: Manages authentication.
+📌 Your Common Errors & Solutions
+Helm Chart Repository Issue:
+
+Error: not a valid chart repository or cannot be reached
+Cause: Network connectivity issue or the repository URL is incorrect.
+Solution: Make sure you have internet access and the URL is correct:
+
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+Port-Forwarding Issue:
+
+Error: unable to create listener: Error listen tcp4 127.0.0.1:8080: bind: address already in use
+Cause: Port 8080 is already in use by another process.
+Solution: Use another port, e.g., 8081.
+
+kubectl port-forward svc/argocd-server -n argocd 8081:443
+Issue: Timeout occurred errors.
+Possible Cause: The service is not properly exposed or there is a network misconfiguration.
+Solution: Make sure your argocd-server service is of type LoadBalancer or NodePort.
+Accessing the ArgoCD UI:
+
+When you try to access https://localhost:8081, you get a NET::ERR_CERT_AUTHORITY_INVALID error.
+This is expected because ArgoCD uses self-signed certificates.
+Click “Proceed to localhost (unsafe)” to access the UI.
+📌 Extracting ArgoCD Password
+ArgoCD creates a secret argocd-initial-admin-secret containing the initial password for the admin user.
+
+
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+Use this password with the admin username to log in.
+
+📌 Logging into the ArgoCD UI
+Access the UI via:
+plaintext
+Copy code
+https://localhost:8081
+Enter:
+Username: admin
+Password: (The password you just extracted).
+📌 Basic Commands
+Add Application (via CLI):
+
+
+argocd app create <app-name> \
+--repo <repo-url> \
+--path <app-path> \
+--dest-server https://kubernetes.default.svc \
+--dest-namespace <namespace>
+List Applications:
+
+
+argocd app list
+Synchronize Application:
+
+
+argocd app sync <app-name>
+Get Application Status:
+
+
+argocd app get <app-name>
+Delete Application:
+
+
+argocd app delete <app-name>
+📌 Troubleshooting
+Check Service Status:
+
+
+kubectl get svc -n argocd
+Make sure argocd-server has a ClusterIP or LoadBalancer.
+
+Check Logs for Errors:
+
+
+kubectl logs -n argocd -l app.kubernetes.io/name=argocd-server
+Check ArgoCD Installation:
+
+
+argocd version
+📌 Recommended Next Steps
+Confirm that your argocd-server service is running properly using:
+
+kubectl get svc argocd-server -n argocd -o yaml
+Use a different port if 8080 is causing issues.
+Continue using argocd CLI to manage your applications.
