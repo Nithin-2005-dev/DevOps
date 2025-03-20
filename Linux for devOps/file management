@@ -1,0 +1,54 @@
+# File Permission Commands
+
+### File Permission Notations Table
+| Symbol | Description | Permission Type |
+|--------|-------------|-----------------|
+| r      | Read        | Allows reading the contents of a file or listing files in a directory. |
+| w      | Write       | Allows modifying or deleting the contents of a file. |
+| x      | Execute     | Allows executing a file as a program or entering a directory. |
+| -      | No Permission| Indicates absence of permission. |
+
+### File Permission Categories
+| Category | Description               |
+|----------|---------------------------|
+| u        | User/Owner of the file    |
+| g        | Group members of the file |
+| o        | Others (everyone else)    |
+| a        | All (user, group, others) |
+
+### File Permission Levels (Numeric Representation)
+| Number | Permission | Symbol |
+|--------|----------------|-----|
+| 0      | No permission  | --- |
+| 1      | Execute only   | --x |
+| 2      | Write only     | -w- |
+| 3      | Write & Execute| -wx |
+| 4      | Read only      | r-- |
+| 5      | Read & Execute | r-x |
+| 6      | Read & Write   | rw- |
+| 7      | Read, Write & Execute | rwx |
+
+### Common Commands
+- `ls -l` : Displays file permissions in long format.
+- `chmod` : Changes file permissions (e.g., `chmod 755 filename`).
+- `chown` : Changes file ownership.
+- `chgrp` : Changes file group ownership.
+- `umask` : Sets default file permissions for newly created files.
+
+
+File Transfer Commands
+
+cp <source> <destination>: Copy files.
+
+cp -r <source> <destination>: Copy directories recursively.
+
+mv <source> <destination>: Move/rename files.
+
+scp <source> <user>@<remote-host>:<destination>: Securely copy files to a remote server.
+
+scp <user>@<remote-host>:<source> <destination>: Securely copy files from a remote server.
+
+rsync -av <source> <user>@<remote-host>:<destination>: Sync files to a remote server with progress.
+
+rsync -av <user>@<remote-host>:<source> <destination>: Sync files from a remote server with progress.
+
