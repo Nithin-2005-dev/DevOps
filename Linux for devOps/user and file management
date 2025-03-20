@@ -1,0 +1,70 @@
+### User and Group Management Commands in Linux
+
+#### Creating Users
+- **Create a new user**:
+  sudo useradd <username>
+  ```
+- **Add a new user with home directory**:
+  sudo useradd -m <username>
+  ```
+- **Create a user and set a password**:
+  sudo passwd <username>
+  ```
+
+#### Deleting Users
+- **Delete a user**:
+  sudo userdel <username>
+  ```
+- **Force delete a user (even if logged in)**:
+  sudo userdel -f <username>
+  ```
+- **Delete a user along with their home directory**:
+  sudo userdel -r <username>
+  ```
+
+#### Modifying Users
+- **Change a user's username**:
+  sudo usermod -l <new_username> <old_username>
+  ```
+- **Change a user's home directory**:
+  sudo usermod -d /new/home/directory <username>
+  ```
+- **Add user to a group**:
+  sudo usermod -aG <groupname> <username>
+  ```
+
+#### Creating Groups
+- **Create a new group**:
+  sudo groupadd <groupname>
+  ```
+
+#### Deleting Groups
+- **Delete a group**:
+  sudo groupdel <groupname>
+  ```
+
+#### Viewing User and Group Information
+- **Check current user**:
+  whoami
+  ```
+- **List all users**:
+  cut -d: -f1 /etc/passwd
+  ```
+- **List all groups**:
+  cut -d: -f1 /etc/group
+  ```
+- **Check groups of a user**:
+  groups <username>
+  ```
+- **Show user information**:
+  id <username>
+  ```
+
+#### Managing User Processes
+- **List all processes by a user**:
+  ps -u <username>
+  ```
+- **Kill all processes of a user**:
+  sudo pkill -u <username>
+  ```
+
