@@ -1,0 +1,45 @@
+## Linux Networking & Security Commands - Revision Notes
+
+### 1. Network Diagnostics
+- **ping [hostname]** – Check connectivity to a remote server.
+- **traceroute [hostname]** – Trace the path packets take to reach a host.
+- **mtr [hostname]** – Combines ping and traceroute to display network performance over time.
+- **tracepath [hostname]** – Another tool to trace network paths (doesn't require root privileges).
+- **nslookup [hostname]** – Query DNS to obtain domain name or IP address mapping.
+- **dig [hostname]** – Provides detailed DNS information.
+- **route [hostname]** – Shows the routing table or allows routing changes.
+- **ifconfig / ip address show** – Displays network interfaces and their configurations.
+- **iwconfig** – Display or change wireless network configuration.
+- **ifplugstatus** – Check if a network cable is plugged in.
+
+### 2. Security Scanning
+- **nikto -h [URL]** – Web server scanner to detect vulnerabilities.
+- **nmap [options] [hostname]** – Network scanner for port scanning, OS detection, etc.
+  - `-sV` – Probe open ports to determine service/version info.
+  - `-Pn` – Treat all hosts as online.
+  - `--script ssl-cert,ssl-enum-ciphers -p 443` – SSL/TLS scanning.
+
+### 3. Information Gathering
+- **whois [domain]** – Retrieves registration details of a domain.
+- **curl [URL]** – Transfer data from or to a server using various protocols.
+- **wget [URL]** – Download files from the internet.
+
+### 4. Firewall Management
+- **sudo ufw status** – Display firewall status (Uncomplicated Firewall).
+- **iptables** – Configure IPv4 packet filtering and NAT.
+  - `sudo iptables -L -v -n` – List all rules with details.
+  - `sudo iptables-save` – Save current iptables configuration.
+
+### 5. Other Commands
+- **telnet [hostname] [port]** – Test connectivity to a remote service over TCP.
+- **hostname** – Display the system's hostname.
+- **ss** – Display socket statistics.
+
+### 6. Network Monitoring
+- **watch mtr [hostname]** – Continuously run mtr for monitoring.
+
+### Notes:
+- Make sure to have **root privileges** where required using `sudo`.
+- To install packages use `sudo apt install [package_name]`.
+
+
